@@ -1,0 +1,7 @@
+C:\Users\nian\source\repos\ModeloV2\bin\Debug\ModeloV2.dll.config
+C:\Users\nian\source\repos\ModeloV2\bin\Debug\ModeloV2.dll
+C:\Users\nian\source\repos\ModeloV2\bin\Debug\ModeloV2.pdb
+C:\Users\nian\source\repos\ModeloV2\obj\Debug\ModeloV2.csprojAssemblyReference.cache
+C:\Users\nian\source\repos\ModeloV2\obj\Debug\ModeloV2.csproj.CoreCompileInputs.cache
+C:\Users\nian\source\repos\ModeloV2\obj\Debug\ModeloV2.dll
+C:\Users\nian\source\repos\ModeloV2\obj\Debug\ModeloV2.pdb

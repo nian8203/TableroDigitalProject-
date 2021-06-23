@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="tableroV2" Class="DatosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-E6I9NL6;Initial Catalog=tableroV2;Integrated Security=True" SettingsObjectName="ModeloV2.Properties.Settings" SettingsPropertyName="tableroV2ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Estado" Member="Estado">
+    <Type Name="Estado">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="estado" Member="estado1" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Estado_UsuarioDb" Member="UsuarioDb" ThisKey="id" OtherKey="idEstado" Type="UsuarioDb" />
+      <Association Name="Estado_Alumno" Member="Alumno" ThisKey="id" OtherKey="idEstado" Type="Alumno" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rol" Member="Rol">
+    <Type Name="Rol">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Rol_UsuarioDb" Member="UsuarioDb" ThisKey="id" OtherKey="idRol" Type="UsuarioDb" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TipoDocumento" Member="TipoDocumento">
+    <Type Name="TipoDocumento">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="TipoDocumento_UsuarioDb" Member="UsuarioDb" ThisKey="id" OtherKey="idTipoDocumento" Type="UsuarioDb" />
+      <Association Name="TipoDocumento_Alumno" Member="Alumno" ThisKey="id" OtherKey="idTipoDocumento" Type="Alumno" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Curso" Member="Curso">
+    <Type Name="Curso">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="curso" Member="curso1" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Curso_AlumnoCurso" Member="AlumnoCurso" ThisKey="id" OtherKey="idCurso" Type="AlumnoCurso" />
+      <Association Name="Curso_CursoAsignatura" Member="CursoAsignatura" ThisKey="id" OtherKey="idCurso" Type="CursoAsignatura" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsuarioDb" Member="UsuarioDb">
+    <Type Name="UsuarioDb">
+      <Column Name="id" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="correo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pass" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="idEstado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idRol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoDocumento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="UsuarioDb_Alumno" Member="Alumno" ThisKey="id" OtherKey="idAcudiente" Type="Alumno" />
+      <Association Name="UsuarioDb_CursoAsignatura" Member="CursoAsignatura" ThisKey="id" OtherKey="idDocente" Type="CursoAsignatura" />
+      <Association Name="Estado_UsuarioDb" Member="Estado" ThisKey="idEstado" OtherKey="id" Type="Estado" IsForeignKey="true" />
+      <Association Name="Rol_UsuarioDb" Member="Rol" ThisKey="idRol" OtherKey="id" Type="Rol" IsForeignKey="true" />
+      <Association Name="TipoDocumento_UsuarioDb" Member="TipoDocumento" ThisKey="idTipoDocumento" OtherKey="id" Type="TipoDocumento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Alumno" Member="Alumno">
+    <Type Name="Alumno">
+      <Column Name="id" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="apellido" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="telefono" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="direccion" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="correo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="idEstado" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idAcudiente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="idTipoDocumento" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Alumno_AlumnoCurso" Member="AlumnoCurso" ThisKey="id" OtherKey="idAlumno" Type="AlumnoCurso" />
+      <Association Name="Alumno_AlumnoEvidencia" Member="AlumnoEvidencia" ThisKey="id" OtherKey="idAlumno" Type="AlumnoEvidencia" />
+      <Association Name="UsuarioDb_Alumno" Member="UsuarioDb" ThisKey="idAcudiente" OtherKey="id" Type="UsuarioDb" IsForeignKey="true" />
+      <Association Name="Estado_Alumno" Member="Estado" ThisKey="idEstado" OtherKey="id" Type="Estado" IsForeignKey="true" />
+      <Association Name="TipoDocumento_Alumno" Member="TipoDocumento" ThisKey="idTipoDocumento" OtherKey="id" Type="TipoDocumento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AlumnoCurso" Member="AlumnoCurso">
+    <Type Name="AlumnoCurso">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCurso" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idAlumno" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="Alumno_AlumnoCurso" Member="Alumno" ThisKey="idAlumno" OtherKey="id" Type="Alumno" IsForeignKey="true" />
+      <Association Name="Curso_AlumnoCurso" Member="Curso" ThisKey="idCurso" OtherKey="id" Type="Curso" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Asignatura" Member="Asignatura">
+    <Type Name="Asignatura">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="materia" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Association Name="Asignatura_CursoAsignatura" Member="CursoAsignatura" ThisKey="id" OtherKey="idAsignatura" Type="CursoAsignatura" />
+      <Association Name="Asignatura_Evidencia" Member="Evidencia" ThisKey="id" OtherKey="idAsignatura" Type="Evidencia" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CursoAsignatura" Member="CursoAsignatura">
+    <Type Name="CursoAsignatura">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idAsignatura" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idDocente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="idCurso" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Asignatura_CursoAsignatura" Member="Asignatura" ThisKey="idAsignatura" OtherKey="id" Type="Asignatura" IsForeignKey="true" />
+      <Association Name="Curso_CursoAsignatura" Member="Curso" ThisKey="idCurso" OtherKey="id" Type="Curso" IsForeignKey="true" />
+      <Association Name="UsuarioDb_CursoAsignatura" Member="UsuarioDb" ThisKey="idDocente" OtherKey="id" Type="UsuarioDb" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Evidencia" Member="Evidencia">
+    <Type Name="Evidencia">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="descripcion" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="fecha" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="idAsignatura" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Evidencia_AlumnoEvidencia" Member="AlumnoEvidencia" ThisKey="id" OtherKey="idEvidencia" Type="AlumnoEvidencia" />
+      <Association Name="Asignatura_Evidencia" Member="Asignatura" ThisKey="idAsignatura" OtherKey="id" Type="Asignatura" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AlumnoEvidencia" Member="AlumnoEvidencia">
+    <Type Name="AlumnoEvidencia">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idEvidencia" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idAlumno" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="nota" Type="System.Decimal" DbType="Decimal(4,1) NOT NULL" CanBeNull="false" />
+      <Association Name="Alumno_AlumnoEvidencia" Member="Alumno" ThisKey="idAlumno" OtherKey="id" Type="Alumno" IsForeignKey="true" />
+      <Association Name="Evidencia_AlumnoEvidencia" Member="Evidencia" ThisKey="idEvidencia" OtherKey="id" Type="Evidencia" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
